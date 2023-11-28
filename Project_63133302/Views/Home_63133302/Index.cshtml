@@ -1,0 +1,92 @@
+﻿@model List<Project_63133302.Models.SanPham>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBanHang.cshtml";
+}
+
+
+<section class="relative z-20 flex items-center overflow-hidden bg-white  py-12 px-[50px] lg:px-[200px]">
+    <div class=" relative flex px-6 py-16 mx-auto">
+        <div class="relative z-20 flex flex-col sm:w-2/3">
+            <span class="w-20 h-2 mb-12 bg-gray-800 ">
+            </span>
+            <h1 class="flex flex-col text-6xl font-black leading-none text-gray-800 uppercase font-bebas-neue sm:text-8xl ">
+                Be on
+                <span class="text-5xl sm:text-7xl">
+                    Time
+                </span>
+            </h1>
+            <p class="text-sm text-gray-700 sm:text-base ">
+                Dimension of reality that makes change possible and
+                understandable. An indefinite and homogeneous environment in
+                which natural events and human existence take place.
+            </p>
+            <div class="flex mt-8">
+                <a href="#"
+                   class="px-4 py-2 mr-4 text-white uppercase bg-pink-500 border-2 border-transparent rounded-lg text-md hover:bg-pink-400">
+                    Get started
+                </a>
+                <a href="#"
+                   class="px-4 py-2 text-pink-500 uppercase bg-transparent border-2 border-pink-500 rounded-lg  hover:bg-pink-500 hover:text-white text-md">
+                    Read more
+                </a>
+            </div>
+        </div>
+        <div class="relative hidden sm:block sm:w-1/3">
+            <img src="data:image/jpeg;base64,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"
+                 class="max-w-xs m-auto  w-full object-cover" />
+        </div>
+    </div>
+</section>
+
+<section class="flex items-center py-20 bg-gray-100 lg:h-screen d flex-col">
+    <h2 class="text-4xl font-bold mb-12">Featured Products</h2>
+    <div class="px-4 mx-auto max-w-7xl">
+        <div class="grid grid-cols-1 gap-4 lg:gap-6 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+            @foreach (var item in Model)
+            {
+                <div class="relative overflow-hidden bg-white shadow rounded-xl d">
+                    <div class="relative overflow-hidden">
+                        <a class="mb-5 overflow-hidden" href="/sanpham_63133302/details/@item.Id">
+                            <img class="object-cover w-full mx-auto transition-all rounded h-72 hover:scale-110"
+                                 src="@item.Anh"
+                                 alt="">
+                        </a>
+                        <button class="absolute top-0 left-0 p-3 bg-blue-500 rounded-l-none hover:bg-blue-600 rounded-b-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                 height="20" fill="currentColor"
+                                 class="text-white" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <a>
+                        <h3 class="px-5 mb-4 text-lg font-bold min-h-[56px] line-clamp-2">
+                            @item.TenSP
+                        </h3>
+                    </a>
+                    <div class="flex">
+                        <div class="w-1/2 px-5 pb-3">
+                            <p class="text-lg font-bold text-blue-500 ">
+                                @item.Gia
+
+                            </p>
+                        </div>
+                        <form action="/home_63133302/ThemSanPhamVaoGioHang" method="post" class="flex-1 text-sm font-bold text-white transition-all bg-blue-500 rounded-r-none hover:bg-blue-600 rounded-t-xl">
+                            <input type="hidden" name="idSP" value="@item.Id" />
+                            <input type="hidden" name="SoLuong" value="1" />
+                            <button class="mt-3 ml-2">
+                                Thêm vào giỏ hàng
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

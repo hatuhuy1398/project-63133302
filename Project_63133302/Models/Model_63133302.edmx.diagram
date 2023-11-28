@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a8188ca081774f95aa84cd16d6ed4982" Name="Diagram1">
+        <EntityTypeShape EntityType="Project_63133302Model.DanhMuc" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="Project_63133302Model.DonHang" Width="1.5" PointX="6" PointY="16" />
+        <EntityTypeShape EntityType="Project_63133302Model.GioHang" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="Project_63133302Model.KhachHang" Width="1.5" PointX="3.75" PointY="17.375" />
+        <EntityTypeShape EntityType="Project_63133302Model.MoTaSanPham" Width="1.5" PointX="5.25" PointY="11.5" />
+        <EntityTypeShape EntityType="Project_63133302Model.PhuongThuc" Width="1.5" PointX="3.75" PointY="14.75" />
+        <EntityTypeShape EntityType="Project_63133302Model.SanPham" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="Project_63133302Model.SanPhamDonHang" Width="1.5" PointX="8.25" PointY="4.25" />
+        <EntityTypeShape EntityType="Project_63133302Model.SanPhamGioHang" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="Project_63133302Model.sysdiagram" Width="1.5" PointX="5.75" PointY="0.875" />
+        <EntityTypeShape EntityType="Project_63133302Model.TaiKhoanAdmin" Width="1.5" PointX="7.75" PointY="0.875" />
+        <AssociationConnector Association="Project_63133302Model.FK_SanPham_DanhMuc" />
+        <AssociationConnector Association="Project_63133302Model.FK__DonHang__IdKH__0D7A0286" />
+        <AssociationConnector Association="Project_63133302Model.FK_DonHang_PhuongThuc" />
+        <AssociationConnector Association="Project_63133302Model.FK_SanPhamDonHang_DonHang" />
+        <AssociationConnector Association="Project_63133302Model.FK__GioHang__IdKH__123EB7A3" />
+        <AssociationConnector Association="Project_63133302Model.FK_SanPhamGioHang_GioHang" />
+        <AssociationConnector Association="Project_63133302Model.FK_MoTaSanPham_SanPham" />
+        <AssociationConnector Association="Project_63133302Model.FK_SanPhamDonHang_SanPham" />
+        <AssociationConnector Association="Project_63133302Model.FK_SanPhamGioHang_SanPham" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

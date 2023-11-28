@@ -1,0 +1,173 @@
+﻿@model List<Project_63133302.Models.SanPhamGioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBanHang.cshtml";
+    var user = Project_63133302.App_Start.SessionConfig.GetUser();
+    var xuLyPhuongThuc = new Project_63133302.DATA.PhuongThuc_63133302();
+    var ds = xuLyPhuongThuc.LayDanhSachPhuongThuc();
+}
+
+<form method="post" class=" py-12">
+    <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+        <a href="#" class="text-2xl font-bold text-gray-800">Đặt hàng</a>
+
+    </div>
+    <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+        <div class="px-4 pt-8">
+            <p class="text-xl font-medium">Tóm Tắt Đơn Hàng</p>
+            <p class="text-gray-400">
+                Kiểm tra sản phẩm của bạn và chọn
+                phương
+                thức vận chuyển phù hợp.
+            </p>
+            <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+
+                @foreach (var item in Model)
+                {
+                    <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+                        <img class="m-2 h-24 w-28 rounded-md border object-cover object-center"
+                             src="@item.SanPham.Anh"
+                             alt="" />
+                        <div class="flex w-full flex-col px-4 py-4">
+                            <span class="font-semibold">
+                                @item.SanPham.TenSP
+                            </span>
+                            <span class="float-right text-gray-400">
+                                x @item.SoLuong
+
+                            </span>
+                            <p class="text-lg font-bold">@item.SanPham.Gia</p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <p class="mt-8 text-lg font-medium">Phương Thức Vận Chuyển</p>
+            <div class="mt-5 grid gap-6">
+                @foreach (var item in ds)
+                {
+                    <div class="relative">
+                        <input class="peer hidden" id="@item.Id" value="@item.Id" type="radio"
+                               name="idPT" checked />
+                        <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                        <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                               for="@item.Id">
+                            <img class="w-14 object-contain"
+                                 src="/images/naorrAeygcJzX0SyNI4Y0.png"
+                                 alt="" />
+                            <div class="ml-5">
+                                <span class="mt-2 font-semibold">
+                                    @item.TenPT
+                                </span>
+                                <p class="text-slate-500 text-sm leading-6">
+                                    Giao
+                                    hàng: 2-4 Ngày
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                }
+
+                
+            </div>
+        </div>
+
+        <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+            <p class="text-xl font-medium">Thông tin</p>
+            <p class="text-gray-400">Điền đầy đủ thống tin của bạn.</p>
+            <div class="">
+                <div class="flex gap-2">
+                    <div class="w-1/2">
+                        <label for="ho"
+                               class="mt-4 mb-2 block text-sm font-medium">Họ</label>
+                        <div class="relative">
+                            <input type="text" id="ho" name="ho" value="@user.Ho"
+                                   class="w-full rounded-md border border-gray-200 px-4 py-3 pl-2 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                                   placeholder=""  required/>
+
+                        </div>
+                    </div>
+                    <div class="w-1/2">
+                        <label for="ten" 
+                               class="mt-4 mb-2 block text-sm font-medium">Tên</label>
+                        <div class="relative">
+                            <input type="text" id="ten" name="ten" value="@user.Ten" required 
+                                   class="w-full rounded-md border border-gray-200 px-4 py-3 pl-2 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                                   placeholder="" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <label for="phone" 
+                           class="mt-4 mb-2 block text-sm font-medium">
+                        Điện
+                        thoại
+                    </label>
+                    <div class="relative">
+                        <input type="text" id="phone" name="DienThoai" value="@user.Sdt" required
+                               class="w-full rounded-md border border-gray-200 px-4 py-3 pl-2 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                               placeholder="" />
+
+                    </div>
+                </div>
+                <div class="">
+                    <label for="diachi"
+                           class="mt-4 mb-2 block text-sm font-medium">
+                        Địa
+                        chỉ
+                    </label>
+                    <div class="relative">
+                        <input type="text" id="diachi" name="DiaChi" value="@user.DiaChi" required
+                               class="w-full rounded-md border border-gray-200 px-4 py-3 pl-2 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                               placeholder="" />
+
+                    </div>
+                </div>
+                <div class="">
+                    <label for="ghichu"
+                           class="mt-4 mb-2 block text-sm font-medium">
+                        Ghi
+                        chú đơn hàng
+                    </label>
+                    <div class="relative">
+                        <textarea type="text" id="ghichu" name="GhiChuDonHang"
+                                  class="w-full rounded-md border border-gray-200 px-4 py-3 pl-2 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                                  placeholder=""></textarea>
+
+                    </div>
+                </div>
+
+                <!-- Total -->
+                <div class="mt-6 border-t border-b py-2">
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                            Tổng
+                            tạm
+                            tính
+                        </p>
+                        <p class="font-semibold text-gray-900">$399.00</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                            Phí vận
+                            chuyển
+                        </p>
+                        <p class="font-semibold text-gray-900">$8.00</p>
+                    </div>
+                </div>
+                <div class="mt-6 flex items-center justify-between">
+                    <p class="text-sm font-medium text-gray-900">Tổng</p>
+                    <p class="text-2xl font-semibold text-gray-900">
+                        $408.00
+                    </p>
+                </div>
+            </div>
+            <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+                Đặt
+                hàng
+            </button>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<section class="flex items-center justify-center h-screen font-poppins">
+    <div class="flex-1">
+        <div class="px-2 mx-auto max-w-7xl lg:px-4">
+            <div class="relative ">
+                <div class="relative px-4 py-4 bg-gray-100 shadow-md  md:py-11 sm:px-8">
+                    <div class="max-w-lg mx-auto text-center">
+                        <a href="#" class="inline-block mb-4 text-blue-900  lg:mb-7 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                 fill="currentColor" class="bi bi-person-circle"
+                                 viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd"
+                                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </a>
+                        <h2 class="mb-4 text-2xl font-bold text-gray-700 lg:mb-7 md:text-5xl ">
+                            Đăng nhập trang quản trị
+                        </h2>
+                        <p class="text-gray-500 ">Thông tin xác thực của bạn ở đây</p>
+                        <form method="post" class="mt-4 lg:mt-7 ">
+                            <div class="">
+                                <input type="email"
+                                       class="w-full px-4 py-3 mt-2 bg-white rounded-lg lg:py-5   -gray-800"
+                                       name="email" placeholder="Nhập email của bạn">
+                            </div>
+                            <div class="mt-4 lg:mt-7">
+                                <div>
+                                    <div class="relative flex items-center">
+                                        <input type="password"
+                                               class="w-full px-4 py-3 bg-white rounded-lg lg:py-5   -gray-800 "
+                                               name="password" placeholder="Nhập mật khẩu">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <button class="w-full py-3 text-lg font-bold text-gray-300 uppercase bg-blue-700 rounded-md lg:mt-7 mt-7   px-11 md:mt-7 hover:bg-blue-900"
+                                    type="submit">
+                                Đăng nhập
+                            </button>
+                            <p class="text-red-600 my-2">@ViewBag.error</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

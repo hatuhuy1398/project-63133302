@@ -1,0 +1,90 @@
+﻿@model Project_63133302.Models.DonHang
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/_LayoutBanHang.cshtml";
+    var  xuLyDonHang = new Project_63133302.DATA.DonHang_63133302();
+    var dsSp = xuLyDonHang.LayDanhSachSanPhamDonHang(Model.Id);
+}
+
+<section class="flex items-center py-16 bg-gray-50 font-poppins  ">
+    <div class="justify-center flex-1 max-w-4xl px-6 py-6 mx-auto bg-gray-100 rounded-md shadow-md   lg:py-10 lg:px-10">
+        <div class="mb-16 text-center">
+            <h1 class="mb-6 text-2xl font-semibold leading-7 tracking-wide text-gray-700 lg:text-4xl  lg:leading-9">
+                Cảm ơn bạn đã đặt hàng, đây là chi tiết đơn hàng của bạn
+            </h1>
+            <p class="text-lg text-gray-500 ">
+                Mã đơn hàng: #@Model.Id
+            </p>
+        </div>
+        <div class="max-w-4xl mx-auto mb-10">
+            <h2 class="mb-4 text-xl font-medium ">
+                Những gì bạn đã đặt:
+            </h2>
+            @foreach (var item in dsSp)
+            {
+                <div class="p-10 mb-8 bg-white rounded-md shadow  sm:flex sm:items-center xl:py-5 xl:px-12">
+                    <a href="#" class="mr-6 md:mr-12">
+                        <img class=" w-full lg:w-[80px] h-[200px] lg:h-[80px]  object-cover  mx-auto mb-6 sm:mb-0 "
+                             src="@item.Anh "
+                             alt="dress">
+                    </a>
+                    <div>
+                        <a class="inline-block mb-1 text-lg font-medium hover:underline "
+                           href="#">
+                            @item.TenSP
+                        </a>
+                        <div class="flex flex-wrap">
+                            <p class="mr-4 text-sm font-medium">
+                                <span class="font-medium ">Giá:</span>
+                                <span class="ml-2 text-gray-400 ">
+                                    @item.Gia
+                                </span>
+                            </p>
+                            <p class="text-sm font-medium ">
+                                <span>Số lượng:</span>
+                                <span class="ml-2 text-gray-400">
+                                    @item.SoLuong
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class="max-w-4xl mx-auto ">
+            <h2 class="mb-4 text-xl font-medium  ">
+                Chi tiết đơn:
+            </h2>
+            <div class="grid grid-cols-1 gap-8 mb-10 lg:grid-cols-3">
+                <div class="flex items-center justify-between px-10 py-3 font-medium leading-8 bg-white bg-opacity-50 rounded-md shadow   font-heading">
+                    <span>Ship</span>
+                    <span class="flex items-center">
+                        <span class="ml-3 mr-1 text-sm">VNĐ</span>
+                        <span class="text-xl">@Model.PhuongThuc.PhiVanChuyen</span>
+                    </span>
+                </div>
+                <div class="flex items-center justify-between px-10 py-3 font-medium leading-8 bg-white bg-opacity-50 rounded-md shadow   font-heading">
+                    <span>Ngày đặt</span>
+                    <span class="flex items-center">
+                        <span class="text-xl">@Model.NgayTaoDon.Value.ToString("dd/MM/yyy")</span>
+                    </span>
+                </div>
+                <div class="flex items-center justify-between px-10 py-3 font-medium leading-8 bg-white rounded-md shadow   font-heading">
+                    <span>Tổng</span>
+                    <span class="flex items-center text-blue-500 ">
+                        <span class="ml-3 mr-1 text-sm">VNĐ</span>
+                        <span class="text-xl">@Model.TongTienThanhToan</span>
+                    </span>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-4 ">
+                <a href="/DonHang_63133302" class="w-full px-6 py-3 text-blue-500 border border-blue-500 rounded-md md:w-auto hover:text-gray-100 hover:bg-blue-600   ">
+                    Trở về danh sách đơn
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>

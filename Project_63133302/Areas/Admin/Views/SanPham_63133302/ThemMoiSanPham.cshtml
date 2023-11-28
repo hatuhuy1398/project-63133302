@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "ThemMoiSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var xuLyDanhMuc = new Project_63133302.DATA.DanhMuc_63133302();
+    var list = xuLyDanhMuc.LayDanhSachDanhMuc();
+}
+
+<div class="p-6 bg-gray-100 flex items-center justify-center">
+    <div class="container  mx-auto">
+        <div>
+
+
+            <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                    <div class="text-gray-600">
+                        <p class="font-medium text-lg">Thêm mới sản phẩm</p>
+                        <p>Vui lòng nhập vào các thông tin phía cạnh</p>
+                    </div>
+
+                    <form class="lg:col-span-2" method="post">
+                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                            <div class="md:col-span-5">
+                                <label for="ten">Tên sản phẩm</label>
+                                <input type="text" name="TenSP" id="ten" required
+                                       class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                                       value="" />
+                            </div>
+
+                            <div class="md:col-span-5">
+                                <label for="mota">Mô tả</label>
+                                <textarea type="text" id="mota" name="MoTa" required
+                                          rows="6"
+                                          class="border py-2 rounded px-4 w-full bg-gray-50"></textarea>
+                            </div>
+
+                            <div class="md:col-span-5">
+                                <select required class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" name="IdDanhMuc">
+                                    <option value="">Chọn danh mục</option>
+                                    @foreach (var item in list)
+                                    {
+                                        <option class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="@item.Id">@item.Ten</option>
+                                    }
+                                </select>
+                               
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label for="SoLuong">Số lượng</label>
+                                <input type="number" min="1" name="SoLuong" id="SoLuong" required
+                                       class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                                       value="" placeholder="" />
+                            </div>
+
+                            <div class="md:col-span-1">
+                                <label for="Gia">Giá</label>
+                                <input type="number" name="Gia" id="Gia" min="1000" required
+                                       class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                                       value="" placeholder="" />
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label for="Anh">Ảnh</label>
+                                <input type="file" name="Anh" id="Anh" required
+                                       class="h-10 border rounded px-4 w-full bg-gray-50"
+                                       value="" placeholder="" />
+                            </div>
+
+                            <div class="md:col-span-5 text-right">
+                                <div class="inline-flex items-end">
+                                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        Thêm sản phẩm
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

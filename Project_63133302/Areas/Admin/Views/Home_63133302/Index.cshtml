@@ -1,0 +1,109 @@
+﻿@model List<Project_63133302.Models.KhachHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="items-center lg:flex bg-white  font-poppins  ">
+    <div class="justify-center flex-1 px-4 py-4 mx-auto lg:py-8 md:px-6">
+        <div class="pt-4 rounded shadow bg-stone-100 ">
+            <div class="flex flex-wrap items-center justify-between px-6 pb-4 border-b ">
+                <h2 class="mb-4 text-xl font-bold md:mb-0 ">
+                    Danh Sách Người Dùng
+                </h2>
+                <div class="flex px-6 py-2 mb-4 border border-gray-600 rounded-md md:mb-0 ">
+                    <input type="text"
+                           class="w-full pr-4 text-sm text-gray-700 bg-stone-100   placeholder-text-100 "
+                           placeholder="Tìm kiếm...">
+                    <button class="flex items-center text-gray-700   hover:text-blue-600">
+                        <span class="mr-2 text-xs ">Tìm</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                             fill="currentColor" class="bi bi-arrow-right"
+                             viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4 overflow-x-auto">
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr class="text-sm text-left text-gray-500 ">
+                            <th class="px-6 pb-3 font-medium ">
+                                Họ
+                            </th>
+                            <th class="px-6 pb-3 font-medium ">Tên </th>
+                            <th class="px-6 pb-3 font-medium">Email </th>
+                            <th class="px-6 pb-3 font-medium">Ngày Sinh </th>
+                            <th class="px-6 pb-3 font-medium"> Địa chỉ</th>
+                            <th class="px-6 pb-3 font-medium"> Giới tính</th>
+                            <th class="px-6 pb-3 font-medium"> Số điện thoại</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-sm bg-white border-b  bg-red-100  ">
+                                <td class="px-6 py-5 font-medium">
+                                   @item.Ho
+                                </td>
+                                <td class="px-6 py-5 font-medium">
+                                   @item.Ten
+                                </td>
+                                <td class="px-6 py-5 font-medium ">@item.TaiKhoan</td>
+                                <td class="px-6 py-5 font-medium ">@item.NgaySinh.Value.ToString("dd/MM/yyyy")</td>
+                                <td class="px-6 py-5 font-medium">
+                                    @item.DiaChi
+                                </td>
+                                <td class="px-6 py-5 font-medium">
+                                    @(item.GioiTinh == true? "Nam": "Nữ")
+                                </td>
+                                <td class="px-6 py-5 font-medium">
+                                    @item.Sdt
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+                <div class="flex justify-end pt-4 mt-4 border-t ">
+                    <nav aria-label="page-navigation">
+                        <ul class="flex list-style-none">
+                            <li class="page-item disabled ">
+                                <a href="#"
+                                   class="relative block pointer-events-none px-3 py-1.5 mr-3 text-base text-gray-700 transition-all duration-300  rounded-md  hover:text-gray-100 hover:bg-blue-600">
+                                    Previous
+                                </a>
+                            </li>
+                            <li class="page-item ">
+                                <a href="#"
+                                   class="relative block px-3 py-1.5 mr-3 text-base hover:text-blue-700 transition-all duration-300 hover:bg-blue-200   rounded-md text-gray-100 bg-blue-600">
+                                    1
+                                </a>
+                            </li>
+                            <li class="page-item ">
+                                <a href="#"
+                                   class="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300   hover:bg-blue-100 rounded-md mr-3  ">
+                                    2
+                                </a>
+                            </li>
+                            <li class="page-item ">
+                                <a href="#"
+                                   class="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300   hover:bg-blue-100 rounded-md mr-3 ">
+                                    3
+                                </a>
+                            </li>
+                            <li class="page-item ">
+                                <a href="#"
+                                   class="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300   hover:bg-blue-100 rounded-md ">
+                                    Next
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

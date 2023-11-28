@@ -1,0 +1,172 @@
+﻿@model Project_63133302.Models.DonHang
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var xuLyDonHang = new Project_63133302.DATA.DonHang_63133302();
+    var dsSp = xuLyDonHang.LayDanhSachSanPhamDonHang(Model.Id);
+
+}
+<section class="flex items-center py-16 bg-gray-100 md:py-20 font-poppins  ">
+    <div class="justify-center flex-1 max-w-6xl px-4 py-4 mx-auto bg-white border rounded-md   md:py-10 md:px-10">
+        <div>
+         
+            <div class="flex border-b border-gray-200   items-stretch justify-start w-full h-full px-4 mb-8 md:flex-row xl:flex-col md:space-x-6 lg:space-x-8 xl:space-x-0">
+                <div class="flex items-start justify-start flex-shrink-0">
+                    <div class="flex items-center justify-center w-full pb-6 space-x-4 md:justify-start">
+                        
+                        <div class="flex flex-col items-start justify-start space-y-2">
+                            <p class="text-lg font-semibold leading-4 text-left text-gray-800 ">
+                                @Model.Ten
+                            </p>
+                            
+                            <p class="text-sm leading-4 cursor-pointer ">
+                                @Model.KhachHang.TaiKhoan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center pb-4 mb-10 border-b border-gray-200 ">
+                <div class="w-full px-4 mb-4 md:w-1/4">
+                    <p class="mb-2 text-sm leading-5 text-gray-600  ">
+                        Số điện thoại:
+                    </p>
+                    <p class="text-base font-semibold leading-4 text-gray-800 ">
+                        @Model.DienThoai
+                    </p>
+                </div>
+                <div class="w-full px-4 mb-4 md:w-1/4">
+                    <p class="mb-2 text-sm leading-5 text-gray-600  ">
+                        Ngày đặt: 
+                    </p>
+                    <p class="text-base font-semibold leading-4 text-gray-800 ">
+                        @Model.NgayTaoDon.Value.ToString("dd/MM/yyyy")
+                    </p>
+                </div>
+                <div class="w-full px-4 mb-4 md:w-1/4">
+                    <p class="mb-2 text-sm font-medium leading-5 text-gray-800  ">
+                        Tổng: 
+                    </p>
+                    <p class="text-base font-semibold leading-4 text-blue-600 ">
+                        @Model.TongTienThanhToan
+                    </p>
+                </div>
+               
+            </div>
+
+            <div class="pb-4">
+                @foreach (var item in dsSp)
+                {
+                    <div class="flex flex-col items-start justify-start w-full mt-4 mb-4 border-b border-gray-200  md:mt-6 md:flex-row md:items-center md:space-x-6 xl:space-x-8">
+                        <div class="w-full pb-4 md:pb-6 md:w-40">
+                            <img class="hidden w-full h-[150px] object-cover md:block"
+                                 src="@item.Anh"
+                                 alt="dress">
+                            <img class="object-cover w-full  h-[450px] md:hidden"
+                                 src="@item.Anh"
+                                 alt="dress">
+                        </div>
+                        <div class="flex flex-col items-start justify-between w-full pb-6 space-y-2 md:flex-row md:space-y-0">
+                            <div class="flex flex-col items-start justify-start w-full space-y-4">
+                                <h2 class="text-xl font-semibold leading-6 text-gray-800  xl:text-2xl">
+                                    @item.TenSP
+                                </h2>
+                               
+                            </div>
+                            <div class="flex items-start justify-between w-full space-x-8">
+                                <p class="text-base leading-6  xl:text-lg">
+                                    @item.Gia
+                                    <span class="text-blue-300 line-through"> $45.00</span>
+                                </p>
+                                <p class="text-base leading-6 text-gray-800  xl:text-lg">
+                                    @item.SoLuong
+                                </p>
+                                <p class="text-base font-semibold leading-6 text-gray-800  xl:text-lg">
+                                    @(item.Gia * item.SoLuong)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="px-4 mb-10">
+                <div class="flex flex-col items-stretch justify-center w-full space-y-4 md:flex-row md:space-y-0 md:space-x-8">
+                    <div class="flex flex-col w-full space-y-6 ">
+                        <h2 class="mb-2 text-xl font-semibold text-gray-700 ">
+                            Chi Tiết Thanh Toán
+                        </h2>
+                        <div class="flex flex-col items-center justify-center w-full pb-4 space-y-4 border-b border-gray-200 ">
+                            <div class="flex justify-between w-full">
+                                <p class="text-base leading-4 text-gray-800 ">
+                                    Tổng tạm tính
+                                </p>
+                                <p class="text-base leading-4 text-gray-600 ">
+                                    @(Model.TongTienThanhToan - Model.PhuongThuc.PhiVanChuyen)
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between w-full">
+                                <p class="text-base leading-4 text-gray-800 ">
+                                    Giảm giá
+                                </p>
+                                <p class="text-base leading-4 text-gray-600 ">
+                                    0%
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between w-full">
+                                <p class="text-base leading-4 text-gray-800 ">
+                                    Phí vận chuyển
+                                </p>
+                                <p class="text-base leading-4 text-gray-600 ">
+                                    @Model.PhuongThuc.PhiVanChuyen
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between w-full">
+                            <p class="text-base font-semibold leading-4 text-gray-800 ">
+                                Tổng
+                            </p>
+                            <p class="text-base font-semibold leading-4 text-gray-600 ">
+                                @Model.TongTienThanhToan
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col w-full px-2 space-y-4 md:px-8 ">
+                        <h2 class="mb-2 text-xl font-semibold text-gray-700 ">
+                            Vận chuyển
+                        </h2>
+                        <div class="flex items-start justify-between w-full">
+                            <div class="flex items-center justify-center space-x-2">
+                                <div class="w-8 h-8">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                         height="16" fill="currentColor"
+                                         class="w-6 h-6 text-blue-600  bi bi-truck"
+                                         viewBox="0 0 16 16">
+                                        <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="flex flex-col items-center justify-start">
+                                    <p class="text-lg font-semibold leading-6 text-gray-800 ">
+                                        @Model.TrangThai<br><span class="text-sm font-normal">
+                                            Giao trong 24 giờ
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-lg font-semibold leading-6 text-gray-800 ">
+                                @Model.PhuongThuc.PhiVanChuyen
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-start gap-4 px-4 mt-6 ">
+                <a href="/admin/Donhang_63133302" class="w-full px-4 py-2 text-blue-500 border border-blue-500 rounded-md md:w-auto hover:text-gray-100 hover:bg-blue-600   ">
+                   Trở lại danh sách đơn hàng
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</section>
